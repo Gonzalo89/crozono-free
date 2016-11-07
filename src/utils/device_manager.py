@@ -29,7 +29,7 @@ def mac_changer():
 		pass
 
 def check_interfering_processes(kill=True):
-	s = subprocess.Popen(['airmon-ng', 'check', 'kill' if kill else None], stdout=subprocess.DEVNULL)
+	s = subprocess.Popen(['airmon-ng', 'check', 'kill' if kill else ''], stdout=subprocess.DEVNULL)
 	_, err = s.communicate()
 	if err is not None:
 		error('Error when killing interfering processes!')
