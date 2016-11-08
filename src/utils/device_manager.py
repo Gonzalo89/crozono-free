@@ -38,9 +38,8 @@ def check_interfering_processes(kill=True):
 
 def toggle_mode_monitor(setting=True):
 	if setting:
-		check_interfering_processes(kill=True)
+		check_interfering_processes(False)
 		subprocess.Popen(['airmon-ng', 'start', settings.INTERFACE], stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
-
 		proc = Popen(['iwconfig'], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
 		for line in proc.communicate()[0].decode().split('\n'):
 			if 'Mode:Monitor' in line:
