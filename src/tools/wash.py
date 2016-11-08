@@ -8,8 +8,9 @@
 
 """
 import os
+import sys
+sys.path.append("/usr/lib/python2.7/dist-packages")
 import pexpect
-
 import src.settings as settings
 
 def wash_scan():

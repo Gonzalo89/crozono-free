@@ -11,7 +11,8 @@ import os
 import csv
 import pexpect
 import src.settings as settings
-
+import sys
+sys.path.append("/usr/local/lib/python2.7/dist-packages")
 from poormanslogging import info, warn, error
 
 def scan_targets():
