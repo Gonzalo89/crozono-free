@@ -51,7 +51,7 @@ class wpa_dictionary(BaseAttack):
 
 		if handshake != False:
 			info("We have something :-) Making a dictionary attack...")
-			cmd_crack = pexpect.spawn('aircrack-ng -w dictionary_wpa2 cr0z0n0_attack-01.cap')
+			cmd_crack = pexpect.spawn('aircrack-ng -w telecentro_dictionary cr0z0n0_attack-01.cap')
 			cmd_crack.logfile = open(settings.LOG_FILE, 'wb')
 			cmd_crack.expect(['KEY FOUND!', 'Failed', pexpect.TIMEOUT, pexpect.EOF])
 			cmd_crack.close()
