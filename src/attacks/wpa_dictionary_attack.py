@@ -41,12 +41,11 @@ class wpa_dictionary(BaseAttack):
 		cmd_pyrit.expect(['No valid', 'good', pexpect.TIMEOUT, pexpect.EOF])
 		cmd_pyrit.close()
 
-		handshake = True
+		handshake = False
 		parse_log_pyrit = open(settings.LOG_FILE, 'r')
 		for line in parse_log_pyrit:
-			if "No valid" in line:
-				warn("We couldn't get the handshake :-(")
-				handshake = False
+			if "good" in line:
+				handshake = True
 		parse_log_pyrit.close()
 		os.remove(settings.LOG_FILE)	
 
@@ -68,6 +67,8 @@ class wpa_dictionary(BaseAttack):
 			os.remove(settings.LOG_FILE)
 			if settings.TARGET_KEY is None:
 				warn("Dictionary attack failed!")
+		else:
+			warn("We couldn't get the handshake :-(")
 
 	def setup(self):
 		#  Delete old files:
