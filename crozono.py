@@ -150,7 +150,7 @@ def main():
 					error("Key not found! :-(")
 					exit(0)
 
-		elif settings.TARGET_PRIVACY == 'WPA' or settings.TARGET_PRIVACY == 'WPA2' or settings.TARGET_PRIVACY == 'WPA2 WPA':
+		elif settings.TARGET_PRIVACY == 'WPA' or settings.TARGET_PRIVACY == 'WPA2' or settings.TARGET_PRIVACY == 'WPA2WPA':
 			info("Cracking {e} access point with {p} privacy...".format(e=settings.TARGET_ESSID, p=settings.TARGET_PRIVACY))
 
 			wps = wash.wash_scan()
@@ -238,5 +238,3 @@ def main():
 	s.shutdown(1)
 
 	info("CROZONO has finished! Good bye! ;)")
-
-main()

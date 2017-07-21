@@ -77,7 +77,7 @@ def connect_to_lan():
 				wpa_supplicant.write('network={\n')
 				wpa_supplicant.write('ssid="' + settings.TARGET_ESSID + '"\n')
 				wpa_supplicant.write('key_mgmt=WPA-PSK\n')
-				wpa_supplicant.write('psk="' + settings.TARGET_KEY.strip() + '"\n')
+				wpa_supplicant.write('psk="' + settings.TARGET_KEY.strip() if settings.TARGET_KEY is not None else '' + '"\n')
 				wpa_supplicant.write('}')
 				wpa_supplicant.close()
 				subprocess.call(['ifconfig', settings.INTERFACE, 'down'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
